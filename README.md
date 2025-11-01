@@ -3,8 +3,11 @@
 A professional, mobile-first WordPress plugin that adds a custom tabbed slider widget to Elementor page builder. Features single visible tab navigation with arrow controls, touch/swipe support, and flexible content options.
 
 **Version:** 1.1.3
+
 **Author:** Syed NomanulHasan
+
 **Author URI:** https://nomaanulhasan.com
+
 
 ## Features
 
