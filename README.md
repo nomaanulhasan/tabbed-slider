@@ -8,6 +8,8 @@ A professional, mobile-first WordPress plugin that adds a custom tabbed slider w
 
 **Author URI:** https://nomaanulhasan.com
 
+**Plugin URI:** [https://nomaanulhasan.com/wordpress/plugins/tabbed-slider](https://nomaanulhasan.com/wordpress/plugins/tabbed-slider_v1.1.3.zip)
+
 
 ## Features
 
