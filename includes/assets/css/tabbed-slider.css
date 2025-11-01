@@ -1,0 +1,332 @@
+/**
+ * Mobile-First Tabbed Slider CSS
+ * Single visible tab with arrows, From/To content sections
+ */
+
+.wp-tabbed-slider {
+	width: 100%;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	font-family: inherit, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Tab Navigation Container */
+.ts-tab-navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 1rem 0;
+	position: relative;
+}
+
+/* Navigation Arrows */
+.ts-nav-arrow {
+	flex-shrink: 0;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	color: #000;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.3s ease;
+	z-index: 2;
+}
+
+.ts-nav-arrow:hover:not(:disabled) {
+	opacity: 0.7;
+}
+
+.ts-nav-arrow:disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+}
+
+.ts-nav-arrow svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Tab Wrapper - hides overflow */
+.ts-tab-wrapper {
+	flex: 1;
+	position: relative;
+	overflow: hidden;
+	min-width: 0;
+}
+
+/* Tab Track - contains all tabs */
+.ts-tab-track {
+	display: flex;
+	transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	will-change: transform;
+}
+
+/* Individual Tab - only one visible */
+.ts-tab {
+	min-width: 100%;
+	/* flex-shrink: 0; */
+	padding: 16px 24px;
+	background: #EF7C00;
+	color: #fff;
+	border: none;
+	border-radius: 100px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	/* white-space: nowrap; */
+	/* overflow: hidden; */
+	/* text-overflow: ellipsis; */
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.ts-tab:hover {
+	color: wheat;
+}
+
+.ts-tab.active {
+	transform: scale(1);
+}
+
+.ts-tab:focus-visible {
+	outline: 2px solid #000;
+	outline-offset: 2px;
+}
+
+/* Content Container */
+.ts-content-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.ts-content-container ul ul {
+	list-style-type: none;
+}
+
+.ts-content-container ul ul>li {
+	text-indent: -1.25rem;
+}
+
+.ts-content-container ul ul>li::before {
+	content: "-";
+	text-indent: -1rem;
+	padding-right: 1rem;
+}
+
+.ts-content-track {
+	max-width: 100%;
+	display: flex;
+	transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ts-content-slide {
+	width: 100%;
+	flex: 1;
+	flex-shrink: 0;
+	padding: 0.625rem 0;
+	display: none;
+}
+
+.ts-content-slide.active {
+	display: block;
+	animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Content Inner Wrapper */
+.ts-content-inner {
+	width: 100%;
+}
+
+/* Elementor Template Content */
+.ts-content-slide .elementor,
+.ts-content-slide .elementor-element,
+.ts-content-slide .elementor-section {
+	max-width: 100%;
+}
+
+.ts-content-slide .elementor-container {
+	max-width: 100%;
+}
+
+/* Legacy Section Styling (for backward compatibility if needed) */
+.ts-section {
+	margin-bottom: 32px;
+}
+
+.ts-section:last-child {
+	margin-bottom: 0;
+}
+
+.ts-section-title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #003D7C;
+	text-align: center;
+	margin: 0 0 16px 0;
+	padding: 0;
+}
+
+/* Legacy Card Styling (for backward compatibility) */
+.ts-card {
+	border-radius: 12px;
+	padding: 20px;
+	border: 1px solid #00000080;
+}
+
+/* Legacy Item Styling (for backward compatibility) */
+.ts-item {
+	margin-bottom: 20px;
+}
+
+.ts-item:last-child {
+	margin-bottom: 0;
+}
+
+.ts-item-title {
+	font-size: 16px;
+	font-weight: 700;
+	color: #212529;
+	margin: 0 0 12px 0;
+	line-height: 1.4;
+}
+
+.ts-item-list {
+	margin: 0;
+	padding-left: 20px;
+	list-style: disc;
+}
+
+.ts-item-list li {
+	font-size: 14px;
+	line-height: 1.6;
+	color: #495057;
+	margin-bottom: 8px;
+}
+
+.ts-item-list li:last-child {
+	margin-bottom: 0;
+}
+
+/* Dots Indicator */
+.ts-dots {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	padding: 20px 16px;
+}
+
+.ts-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: none;
+	padding: 0;
+	background: #4F9CF9;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	flex-shrink: 0;
+}
+
+.ts-dot:hover {
+	transform: scale(1.2);
+	background: #043873;
+}
+
+.ts-dot.active {
+	background: #043873;
+	width: 12px;
+	height: 12px;
+	transform: scale(1.3);
+}
+
+.ts-dot:focus-visible {
+	outline: 2px solid #043873;
+	outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+	.wp-tabbed-slider {
+		max-width: 600px;
+	}
+
+	.ts-tab {
+		font-size: 18px;
+		padding: 18px 28px;
+	}
+
+	.ts-nav-arrow {
+		width: 36px;
+		height: 36px;
+	}
+
+	.ts-section-title {
+		font-size: 1.25rem;
+	}
+
+	.ts-card {
+		padding: 1.5rem;
+	}
+
+	.ts-item-title {
+		font-size: 17px;
+	}
+
+	.ts-item-list li {
+		font-size: 15px;
+	}
+}
+
+/* Touch Improvements */
+@media (hover: none) and (pointer: coarse) {
+	.ts-nav-arrow {
+		width: 44px;
+		height: 44px;
+		touch-action: manipulation;
+	}
+
+	.ts-tab {
+		padding: 18px 24px;
+		touch-action: manipulation;
+	}
+
+	.ts-dot {
+		width: 12px;
+		height: 12px;
+		touch-action: manipulation;
+	}
+}
+
+/* Print Styles */
+@media print {
+
+	.ts-tab-navigation,
+	.ts-dots,
+	.ts-nav-arrow {
+		display: none;
+	}
+
+	.ts-content-slide {
+		display: block !important;
+		page-break-inside: avoid;
+	}
+}
