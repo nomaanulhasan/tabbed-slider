@@ -1,11 +1,11 @@
-=== Tabbed Slider for Elementor ===
+=== Tabbed Slider ===
 Contributors: nomaanulhasan
 Donate link: https://nomaanulhasan.com
 Tags: elementor, slider, tabs, responsive, mobile
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.1.3
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,13 @@ Yes. It’s optimized for mobile-first layouts with touch and swipe gestures.
 2. Example of slider on a live page.
 
 == Changelog ==
+
+= 1.1.5 =
+* Plugin Check - Fixed all errors for wordpress.org
+
+= 1.1.4 =
+* Made it submittable on wordpress.org
+* Added License
 
 = 1.1.3 =
 * Improved mobile responsiveness.

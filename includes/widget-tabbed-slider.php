@@ -247,7 +247,7 @@ class Tabbed_Slider_Elementor_Widget extends \Elementor\Widget_Base {
 
         // Render slider
         if (empty($items)) {
-            echo '<p>' . __('Please add at least one tab.', 'tabbed-slider') . '</p>';
+            echo '<p>' . esc_html__('Please add at least one tab.', 'tabbed-slider') . '</p>';
             return;
         }
 
@@ -278,7 +278,11 @@ class Tabbed_Slider_Elementor_Widget extends \Elementor\Widget_Base {
                             <button class="ts-tab <?php echo $index === 0 ? 'active' : ''; ?>"
                                     data-index="<?php echo esc_attr($index); ?>"
                                     type="button">
-                                <?php echo esc_html($item['title'] ?? sprintf(__('Tab #%d', 'tabbed-slider'), $index + 1)); ?>
+                                <?php
+                                /* translators: %d: Tab index (1-based). Used when a tab has no title provided. */
+                                $ts_tab_title = $item['title'] ?? sprintf(__('Tab #%d', 'tabbed-slider'), $index + 1);
+                                echo esc_html($ts_tab_title);
+                                ?>
                             </button>
                         <?php endforeach; ?>
                     </div>
@@ -308,13 +312,17 @@ class Tabbed_Slider_Elementor_Widget extends \Elementor\Widget_Base {
                                     // In editor, show template content
                                     $template_content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id, true);
                                     if (!empty($template_content)) {
-                                        echo $template_content;
+                                        // Allow only safe post HTML from Elementor output.
+                                        echo wp_kses_post($template_content);
                                     } else {
-                                        echo '<div class="ts-content-inner"><p>' . sprintf(__('Template #%d not found or empty.', 'tabbed-slider'), $template_id) . '</p></div>';
+                                        /* translators: %d: Template post ID. Message shown when the saved Elementor template cannot be found or is empty. */
+                                        $ts_template_missing = sprintf(esc_html__('Template #%d not found or empty.', 'tabbed-slider'), absint($template_id));
+                                        echo '<div class="ts-content-inner"><p>' . esc_html($ts_template_missing) . '</p></div>';
                                     }
                                 } else {
                                     // On frontend, render normally
-                                    echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id);
+                                    // Allow only safe post HTML from Elementor output.
+                                    echo wp_kses_post(\Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id));
                                 }
                             } else {
                                 // Render WYSIWYG editor content

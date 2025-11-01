@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name: Tabbed Slider for Elementor
- * Plugin URI: https://nomaanulhasan.com/wordpress/plugins/tabbed-slider_v1.1.3.zip
+ * Plugin Name: Tabbed Slider
+ * Plugin URI: https://nomaanulhasan.com/wordpress/plugins/tabbed-slider_v1.1.5.zip
  * Description: A custom Elementor widget that adds a tabbed slider component.
- * Version: 1.1.3
+ * Version: 1.1.5
  * Author: Syed NomanulHasan
  * Author URI: https://nomaanulhasan.com
  * WordPress Tabbed Slider Component - Mobile First
  * Elementor Compatible
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: tabbed-slider-elementor
+ * Text Domain: tabbed-slider
  *
  * @package TabbedSlider
  */
