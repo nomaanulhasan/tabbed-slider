@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Tabbed Slider
- * Plugin URI: https://nomaanulhasan.com/wordpress/plugins/tabbed-slider_v1.1.5.zip
+ * Plugin URI: https://nomaanulhasan.com/wordpress/plugins/tabbed-slider
  * Description: A custom Elementor widget that adds a tabbed slider component.
- * Version: 1.1.5
+ * Version: 1.2.0
  * Author: Syed NomanulHasan
  * Author URI: https://nomaanulhasan.com
  * WordPress Tabbed Slider Component - Mobile First
@@ -261,3 +261,103 @@ function tabbed_slider_register_elementor_widgets($widgets_manager) {
 }
 
 add_action('elementor/widgets/register', 'tabbed_slider_register_elementor_widgets');
+
+/**
+ * Admin: Intro Page (plain HTML & CSS)
+ */
+function tabbed_slider_register_intro_page() {
+    add_menu_page(
+        'Tabbed Slider',
+        'Tabbed Slider',
+        'manage_options',
+        'tabbed-slider',
+        'tabbed_slider_render_intro_page',
+        'dashicons-slides',
+        80
+    );
+}
+
+add_action('admin_menu', 'tabbed_slider_register_intro_page');
+
+/**
+ * Render the plugin intro page with simple HTML and CSS
+ */
+function tabbed_slider_render_intro_page() {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    ?>
+    <div class="ts-admin-wrap">
+        <style>
+            .ts-admin-wrap { max-width: 960px; margin: 24px auto; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif; color: #1d2327; }
+            .ts-hero { background: #f6f7f7; border: 1px solid #dcdcde; border-radius: 8px; padding: 28px; display: flex; gap: 20px; align-items: center; }
+            .ts-hero-icon { width: 56px; height: 56px; display: inline-flex; align-items: center; justify-content: center; background: #2271b1; color: #fff; border-radius: 8px; }
+            .ts-hero h1 { margin: 0 0 6px; font-size: 22px; }
+            .ts-hero p { margin: 0; color: #3c434a; }
+            .ts-section { margin-top: 28px; background: #fff; border: 1px solid #dcdcde; border-radius: 8px; }
+            .ts-section h2 { margin: 0; padding: 16px 20px; font-size: 18px; border-bottom: 1px solid #dcdcde; background: #fbfbfc; }
+            .ts-section .ts-content { padding: 16px 20px; }
+            .ts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+            .ts-card { border: 1px solid #e2e4e7; border-radius: 8px; padding: 16px; background: #fff; }
+            .ts-card h3 { margin: 0 0 8px; font-size: 15px; }
+            .ts-card p { margin: 0 0 10px; color: #50575e; }
+            .ts-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #eef6ff; color: #1d4ed8; font-size: 12px; border: 1px solid #bfdbfe; }
+            .ts-kbd { display: inline-block; padding: 2px 6px; border: 1px solid #c3c4c7; border-bottom-width: 2px; background: #f6f7f7; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
+            .ts-code { display: block; background: #0b1520; color: #d1e4ff; padding: 12px 14px; border-radius: 6px; overflow: auto; font-size: 13px; }
+            .ts-list { margin: 0; padding-left: 18px; }
+            .ts-list li { margin: 6px 0; }
+            .ts-hint { color: #3c434a; font-size: 13px; }
+            .ts-footer { margin-top: 16px; color: #6b7280; font-size: 12px; }
+            .ts-highlight { color: #2271b1; }
+        </style>
+
+        <div class="ts-hero">
+            <div class="ts-hero-icon">
+                <span class="dashicons dashicons-slides" style="font-size:24px; line-height:56px; width:56px; height:56px;"></span>
+            </div>
+            <div>
+                <h1>Tabbed Slider for WordPress</h1>
+                <p>Create a mobile-first, accessible tabbed slider anywhere using a shortcode or the Elementor widget.</p>
+            </div>
+        </div>
+
+        <div class="ts-section">
+            <h2>Quick Start</h2>
+            <div class="ts-content ts-grid">
+                <div class="ts-card">
+                    <h3>1) Insert via Shortcode <span class="ts-badge">Fastest</span></h3>
+                    <p>Add this into any post, page, or widget area:</p>
+                    <code class="ts-code">[tabbed_slider autoplay="false" autoplay_delay="6000"]</code>
+                    <ul class="ts-list">
+                        <li><strong>autoplay</strong>: <span class="ts-kbd">true</span> or <span class="ts-kbd">false</span></li>
+                        <li><strong>autoplay_delay</strong>: milliseconds (e.g. <span class="ts-kbd">6000</span>)</li>
+                    </ul>
+                    <p class="ts-hint">Use block editor: add a Shortcode block and paste the code above.</p>
+                </div>
+                <div class="ts-card">
+                    <h3>2) Use Elementor Widget</h3>
+                    <p>Open Elementor, search for <span class="ts-highlight">Tabbed Slider</span>, drag it into your layout, and tune settings (autoplay, delay) in the widget panel.</p>
+                </div>
+                <div class="ts-card">
+                    <h3>3) What it Renders</h3>
+                    <p>The slider shows tab buttons with left/right arrows and slides content for “From” and “To” sections. It’s mobile‑first and keyboard accessible.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ts-section">
+            <h2>How It Works</h2>
+            <div class="ts-content">
+                <ul class="ts-list">
+                    <li>Front-end CSS/JS are loaded from the plugin&apos;s <span class="ts-kbd">includes/assets</span> folder.</li>
+                    <li>Shortcode <span class="ts-kbd">[tabbed_slider]</span> renders the component with sensible demo content by default.</li>
+                    <li>Elementor users get a dedicated widget registered by the plugin.</li>
+                </ul>
+                <p class="ts-footer">Need help? See the plugin readme or contact the author.</p>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+

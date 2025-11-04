@@ -5,7 +5,7 @@ Tags: elementor, slider, tabs, responsive, mobile
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.1.5
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ It supports responsive layouts, touch/swipe gestures, keyboard navigation, autop
 - Autoplay and dot indicators
 - Accessibility (ARIA, focus states)
 
-Plugin page: [https://nomaanulhasan.com/wordpress/plugins/tabbed-slider](https://nomaanulhasan.com/wordpress/plugins/tabbed-slider)
+Plugin page: https://nomaanulhasan.com/wordpress/plugins/tabbed-slider
 
 == Installation ==
 
@@ -46,6 +46,11 @@ Yes. It’s optimized for mobile-first layouts with touch and swipe gestures.
 2. Example of slider on a live page.
 
 == Changelog ==
+
+= 1.2.0 =
+* Admin intro page Added
+* Added info about the plugin usage for improving developer experience
+* Plugin landing page added and URL updated into the plugin
 
 = 1.1.5 =
 * Plugin Check - Fixed all errors for wordpress.org
